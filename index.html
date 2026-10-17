@@ -3,75 +3,282 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>Shadows: Vanguard - Манга и Лор</title>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;600&display=swap" rel="stylesheet">
+  <title>Shadows: Vanguard of the Void — Манга и Лор</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
+  <meta name="description" content="Shadows: Vanguard — фан-сайт: манга, ридер и энциклопедия лора в стиле тёмного фэнтези">
   <style>
     :root{
-      --bg:#0b091a;
-      --neon:#9b4cff;
-      --muted:#8a86a3;
-      --card:#0f0d1f;
+      --bg:#07060e;
+      --card:#120f24;
+      --neon:#8a2be2;
+      --gold:#d4af37;
+      --muted:#9b92a8;
+      --accent-glow: 0 8px 40px rgba(138,43,226,0.12);
     }
-    html,body{height:100%;margin:0;font-family:Montserrat,system-ui,Segoe UI,Roboto,"Helvetica Neue",Arial;background:var(--bg);color:#e7e3fb}
-    .container{max-width:1100px;margin:4rem auto;padding:2rem}
-    header{display:flex;align-items:center;justify-content:space-between;gap:1rem}
-    .site-title{font-family:'Playfair Display',serif;font-size:2.25rem;letter-spacing:1px;color:var(--neon);text-shadow:0 0 18px rgba(155,76,255,0.18)}
-    nav a{color:var(--muted);text-decoration:none;margin-left:1rem;padding:.5rem .9rem;border-radius:8px;border:1px solid transparent;transition:all .18s}
-    nav a:hover{color:#fff;border-color:rgba(155,76,255,0.18);box-shadow:0 4px 30px rgba(155,76,255,0.08)}
-    .hero{margin-top:2.5rem;padding:2rem;border-radius:12px;background:linear-gradient(180deg, rgba(149,93,255,0.04), transparent);box-shadow:inset 0 1px 0 rgba(255,255,255,0.02)}
-    .hero h2{margin:.2rem 0;color:#fff;font-size:1.6rem}
-    .links{display:flex;flex-wrap:wrap;gap:1rem;margin-top:1.25rem}
-    .card{flex:1 1 280px;background:var(--card);padding:1.25rem;border-radius:10px;border:1px solid rgba(155,76,255,0.06);box-shadow:0 6px 30px rgba(3,2,6,0.6)}
-    .card h3{color:var(--neon);margin:0 0 .5rem}
-    .card p{color:var(--muted);margin:0 0 1rem}
-    .btn{display:inline-block;background:linear-gradient(90deg,#8f49ff,#bb6bff);color:#0b091a;padding:.6rem 1rem;border-radius:8px;font-weight:600;text-decoration:none;box-shadow:0 10px 30px rgba(155,76,255,0.14);transition:transform .12s ease}
-    .btn:hover{transform:translateY(-3px)}
-    footer{margin-top:3rem;color:var(--muted);font-size:.9rem;text-align:center}
-    /* subtle star-field */
-    .bg-stars{position:fixed;inset:0;z-index:-1;background-image:radial-gradient(rgba(155,76,255,0.06) 1px, transparent 1px);background-size:120px 120px;opacity:.8}
-    @media (max-width:700px){.container{margin:2rem 1rem}.site-title{font-size:1.6rem}}
+    *{box-sizing:border-box}
+    html,body{height:100%;margin:0;background:linear-gradient(180deg,var(--bg),#05040a 120%);color:#edf0ff;font-family:Inter,system-ui,Arial;background-attachment:fixed}
+    a{color:inherit}
+
+    /* App container */
+    .app{max-width:1100px;margin:0 auto;padding:2rem}
+
+    /* Header */
+    header.app-header{display:flex;align-items:center;justify-content:space-between;gap:1rem}
+    .brand{display:flex;align-items:center;gap:.75rem}
+    .logo{width:56px;height:56px;border-radius:10px;background:linear-gradient(135deg,var(--neon),var(--gold));box-shadow:var(--accent-glow);display:flex;align-items:center;justify-content:center;font-family:Cinzel,serif;font-weight:700;color:#07060e}
+    .title{font-family:Cinzel,serif;font-size:1.5rem;color:var(--neon);text-shadow:0 4px 30px rgba(138,43,226,0.12)}
+    nav.top-nav{display:flex;gap:.5rem}
+    nav.top-nav a{background:transparent;border:1px solid rgba(255,255,255,0.02);padding:.45rem .8rem;border-radius:8px;color:var(--muted);text-decoration:none;font-weight:600}
+    nav.top-nav a.active{color:#fff;border-color:rgba(138,43,226,0.12);box-shadow:var(--accent-glow)}
+
+    /* Hero */
+    .hero{margin-top:1.5rem;padding:1.75rem;border-radius:12px;background:linear-gradient(180deg,rgba(138,43,226,0.04),transparent);border:1px solid rgba(138,43,226,0.04)}
+    .hero h1{font-family:Cinzel,serif;margin:.1rem 0 0;font-size:2rem;color:var(--gold);text-shadow:0 8px 40px rgba(212,175,55,0.06)}
+    .hero p{color:var(--muted);margin:.5rem 0 1rem}
+
+    /* Grid of chapters / lore */
+    .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:1rem;margin-top:1rem}
+    .card{background:var(--card);padding:1rem;border-radius:10px;border:1px solid rgba(255,255,255,0.02);box-shadow:0 6px 30px rgba(2,2,6,0.6)}
+    .card h3{margin:.25rem 0;color:var(--neon);font-family:Cinzel,serif}
+    .card p{color:var(--muted);margin:0 0 .75rem}
+    .card .cta{display:inline-block;background:linear-gradient(90deg,var(--neon),#b070ff);color:#07060e;padding:.5rem .8rem;border-radius:8px;font-weight:700;text-decoration:none}
+
+    /* Reader */
+    .reader{position:relative;margin-top:1rem}
+    .reader-toolbar{position:sticky;top:18px;z-index:40;display:flex;align-items:center;justify-content:space-between;background:linear-gradient(180deg,rgba(18,15,36,0.9),rgba(18,15,36,0.7));backdrop-filter:blur(6px);padding:.5rem 1rem;border-radius:8px;border:1px solid rgba(255,255,255,0.02)}
+    .reader-toolbar .meta{display:flex;align-items:center;gap:.6rem}
+    .reader-toolbar .meta h4{margin:0;font-family:Cinzel,serif;color:var(--neon)}
+    .reader-toolbar .controls{display:flex;gap:.5rem}
+    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.04);color:var(--muted);padding:.45rem .6rem;border-radius:8px;font-weight:600}
+    .btn-ghost.primary{background:linear-gradient(90deg,var(--neon),#b070ff);color:#07060e;border:none;box-shadow:var(--accent-glow)}
+
+    /* Webtoon column */
+    .webtoon{margin-top:.75rem;display:flex;flex-direction:column;gap:1rem}
+    .panel{width:100%;border-radius:10px;overflow:hidden;background:linear-gradient(180deg,rgba(255,255,255,0.01),transparent);min-height:80vh;display:flex;align-items:center;justify-content:center}
+    .panel img{width:100%;height:auto;display:block;opacity:0;transform:translateY(6px);transition:opacity .45s ease,transform .45s ease}
+    .panel img.loaded{opacity:1;transform:none}
+
+    /* Lore list */
+    .lore-grid .tag{display:inline-block;padding:.25rem .5rem;border-radius:6px;background:rgba(138,43,226,0.06);color:var(--neon);font-weight:600;font-size:.85rem}
+
+    /* Footer */
+    footer{margin:2.5rem 0 4rem;color:var(--muted);text-align:center}
+
+    @media (max-width:720px){.hero h1{font-size:1.5rem}.reader-toolbar{flex-direction:column;align-items:flex-start;gap:.5rem}}
   </style>
 </head>
 <body>
-  <div class="bg-stars" aria-hidden="true"></div>
-  <div class="container">
-    <header>
-      <div class="site-title">Shadows: Vanguard</div>
-      <nav>
-        <a href="index.html">Главная</a>
-        <a href="chapter-1.html">Читать мангу</a>
-        <a href="lore.html">Лор игры</a>
+  <div class="app">
+    <header class="app-header">
+      <div class="brand">
+        <div class="logo">SV</div>
+        <div>
+          <div class="title">Shadows: Vanguard</div>
+          <div style="font-size:.8rem;color:var(--muted)">Of the Void — фан-сайт</div>
+        </div>
+      </div>
+      <nav class="top-nav" role="navigation" aria-label="Основные разделы">
+        <a href="#home" data-route="home" class="active">Главная</a>
+        <a href="#reader?chapter=1" data-route="reader">Ридер</a>
+        <a href="#lore" data-route="lore">Лор</a>
       </nav>
     </header>
 
-    <section class="hero">
-      <h2>Тёмная фэнтези манга и лор Shadows: Vanguard of the Void</h2>
-      <p style="color:var(--muted);">Добро пожаловать в сумеречный мир, где ангелы тени сражаются за осколки забытой пустоты. На этом сайте вы найдёте мангу по мотивам игры и подробный лор.</p>
+    <main id="view-root">
+      <!-- Home -->
+      <section id="home" class="view">
+        <section class="hero card">
+          <h1>Погрузись в тьму. Читай мангу. Узнавай лор.</h1>
+          <p>Вертикальные главы в формате Webtoon, энциклопедия карт, стихий и Авангардов — вс�� на одной странице. Оптимизировано для мобильного чтения и GitHub Pages.</p>
+          <div style="margin-top:1rem;display:flex;gap:.5rem;flex-wrap:wrap">
+            <a class="cta" href="#reader?chapter=1">Читать Гл. 1</a>
+            <a class="cta" href="#lore" style="background:linear-gradient(90deg,var(--gold),#f0d57a);color:#07060e;margin-left:.5rem">Открыть Лор</a>
+          </div>
+        </section>
 
-      <div class="links">
-        <article class="card">
-          <h3>Манга — Глава 1</h3>
-          <p>Вертикальная лента для удобного чтения на любом устройстве.</p>
-          <a class="btn" href="chapter-1.html">Начать читать</a>
-        </article>
+        <h2 style="margin-top:1.25rem;color:var(--neon);font-family:Cinzel,serif">Главы манги</h2>
+        <div class="grid" id="chapters-grid">
+          <!-- chapters injected by JS -->
+        </div>
 
-        <article class="card">
-          <h3>Лор игры</h3>
-          <p>Записи мира, фракции, персонажи и события, формирующие вселенную Shadows.</p>
-          <a class="btn" href="lore.html">Открыть лор</a>
-        </article>
+      </section>
 
-        <article class="card">
-          <h3>Новости и обновления</h3>
-          <p>Следите за выходом новых глав и дополнений в мире Shadows.</p>
-          <a class="btn" href="#">Подписаться</a>
-        </article>
-      </div>
-    </section>
+      <!-- Reader -->
+      <section id="reader" class="view" style="display:none">
+        <div class="reader card">
+          <div class="reader-toolbar">
+            <div class="meta">
+              <button class="btn-ghost" id="to-home">На главную</button>
+              <h4 id="chapter-title">Глава 1 — Песнь Тени</h4>
+            </div>
+            <div class="controls">
+              <button class="btn-ghost" id="prev-ch">Предыдущая</button>
+              <button class="btn-ghost primary" id="next-ch">Следующая глава</button>
+              <button class="btn-ghost" id="toggle-fit">Адаптировать</button>
+            </div>
+          </div>
 
-    <footer>
-      © Shadows: Vanguard — фан-сайт. Дизайн в стиле тёмного фэнтези с неоново-фиолетовыми акцентами.
-    </footer>
+          <div id="webtoon" class="webtoon" aria-live="polite">
+            <!-- panels injected by JS -->
+          </div>
+        </div>
+      </section>
+
+      <!-- Lore -->
+      <section id="lore" class="view" style="display:none">
+        <section class="card">
+          <h2 style="margin:0;color:var(--gold);font-family:Cinzel,serif">Энциклопедия Лора</h2>
+          <p style="color:var(--muted);margin-top:.5rem">Краткие справки по Вратам, Стихиям и Авангардам. Нажмите карточку для подробностей.</p>
+
+          <div class="grid lore-grid" id="lore-grid" style="margin-top:1rem">
+            <!-- lore cards injected by JS -->
+          </div>
+        </section>
+      </section>
+
+    </main>
+
+    <footer>© Shadows: Vanguard — фанатский проект. Размещено на GitHub Pages.</footer>
   </div>
+
+  <script>
+    // Simple SPA routing (hash-based) and DOM injection
+    const root = document.getElementById('view-root');
+    const routes = {home: document.getElementById('home'), reader: document.getElementById('reader'), lore: document.getElementById('lore')};
+    const navLinks = document.querySelectorAll('nav.top-nav a');
+
+    function parseHash(){
+      const h = location.hash || '#home';
+      const [path, qs] = h.slice(1).split('?');
+      const params = new URLSearchParams(qs || '');
+      return {path: path || 'home', params};
+    }
+
+    function showView(name){
+      Object.values(routes).forEach(v => v.style.display = 'none');
+      const view = routes[name] || routes.home;
+      view.style.display = '';
+      navLinks.forEach(a => a.classList.toggle('active', a.getAttribute('href').startsWith('#'+name)));
+      // On reader show, ensure images are observed
+      if(name === 'reader') observePanels();
+    }
+
+    window.addEventListener('hashchange', ()=>{const {path, params}=parseHash(); showView(path); if(path==='reader') loadChapter(params.get('chapter')||'1')});
+    // Init
+    (function init(){
+      // populate chapters list
+      const chapters = [{id:1,title:'Песнь Тени',thumb:'assets/manga/ch1/01.webp',pages:12},{id:2,title:'Пробуждение Врат',thumb:'assets/manga/ch2/01.webp',pages:10}];
+      const grid = document.getElementById('chapters-grid');
+      chapters.forEach(ch => {
+        const el = document.createElement('article'); el.className='card';
+        el.innerHTML = `<h3>Глава ${ch.id}: ${escapeHtml(ch.title)}</h3><p>Страниц: ${ch.pages}</p><a class=cta href="#reader?chapter=${ch.id}">Читать</a>`;
+        grid.appendChild(el);
+      });
+
+      // populate lore
+      const lore = [
+        {title:'Врата Ночи',tag:'Врата',desc:'Древние порталы, ведущие в пустоту тьмы.'},
+        {title:'Стихия Тени',tag:'Стихия',desc:'Контролируют разрыв между мирами и поглощают свет.'},
+        {title:'Авангард Ноктис',tag:'Авангард',desc:'Элитный отряд, защищающий осколки Врат.'}
+      ];
+      const loreGrid = document.getElementById('lore-grid');
+      lore.forEach(item =>{const c=document.createElement('article');c.className='card';c.innerHTML=`<div class=tag>${escapeHtml(item.tag)}</div><h3>${escapeHtml(item.title)}</h3><p>${escapeHtml(item.desc)}</p>`;loreGrid.appendChild(c)});
+
+      // wire header nav
+      navLinks.forEach(a => a.addEventListener('click', (e)=>{navLinks.forEach(x=>x.classList.remove('active')); a.classList.add('active')}));
+
+      // toolbar buttons
+      document.getElementById('to-home').addEventListener('click', ()=>location.hash='#home');
+      document.getElementById('next-ch').addEventListener('click', ()=>{const cur = currentChapter || 1; location.hash = `#reader?chapter=${cur+1}`});
+      document.getElementById('prev-ch').addEventListener('click', ()=>{const cur = currentChapter || 1; if(cur>1) location.hash = `#reader?chapter=${cur-1}`});
+      document.getElementById('toggle-fit').addEventListener('click', ()=>{document.body.classList.toggle('fit-mobile')});
+
+      // start
+      const {path, params}=parseHash(); showView(path); if(path==='reader') loadChapter(params.get('chapter')||'1');
+    })();
+
+    // Utility
+    function escapeHtml(s){return (s+'').replace(/[&<>"']/g, c=>({ '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":"&#39;" })[c]);}
+
+    // Reader logic
+    let currentChapter = 1;
+    const webtoon = document.getElementById('webtoon');
+
+    function loadChapter(id){
+      currentChapter = parseInt(id,10) || 1;
+      document.getElementById('chapter-title').textContent = `Глава ${currentChapter} — ${currentChapter===1? 'Песнь Тени' : 'Глава '+currentChapter}`;
+      // clear existing
+      webtoon.innerHTML = '';
+
+      // Build list of assumed pages. Here we attempt to request up to 25 images; real site should add exact count per chapter.
+      const pages = 20; // try up to 20 pages
+      for(let i=1;i<=pages;i++){
+        const idx = String(i).padStart(2,'0');
+        const panel = document.createElement('figure'); panel.className='panel';
+
+        // Picture with WebP + fallback (jpg)
+        const pic = document.createElement('picture');
+        const srcWebp = `assets/manga/ch${currentChapter}/${idx}.webp`;
+        const srcJpg = `assets/manga/ch${currentChapter}/${idx}.jpg`;
+
+        const source = document.createElement('source'); source.type='image/webp'; source.srcset = srcWebp;
+        const img = document.createElement('img'); img.alt = `Глава ${currentChapter} — страница ${i}`; img.dataset.src = srcJpg; img.dataset.webp = srcWebp; img.loading='lazy';
+        // graceful placeholder
+        img.style.background = 'linear-gradient(90deg, rgba(138,43,226,0.04), rgba(212,175,55,0.02))';
+        pic.appendChild(source); pic.appendChild(img); panel.appendChild(pic);
+        webtoon.appendChild(panel);
+
+        // Click to toggle full-screen-ish
+        panel.addEventListener('click', ()=>{img.classList.toggle('zoomed')});
+      }
+
+      // After injecting, set up observer
+      observePanels();
+    }
+
+    // IntersectionObserver for lazy-loading + fade-in
+    let io = null;
+    function observePanels(){
+      if(io) io.disconnect();
+      const imgs = document.querySelectorAll('#webtoon img');
+      io = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting){
+            const img = entry.target;
+            // load webp first by setting src to webp via picture source + forcing img src for fallback
+            // We attempt to load webp by creating new Image and checking if browser accepts webp via source element — <picture> with <source> handles it automatically when img.src is set.
+            if(!img.src){
+              img.src = img.dataset.webp || img.dataset.src;
+              // attach load handlers
+              img.addEventListener('load', ()=>{img.classList.add('loaded')});
+              img.addEventListener('error', ()=>{
+                // fallback to jpg
+                if(img.src !== img.dataset.src){ img.src = img.dataset.src; }
+              });
+            }
+            io.unobserve(img);
+          }
+        });
+      },{rootMargin:'200px 0px',threshold:0.01});
+
+      imgs.forEach(i=>{ if(i && !i.src) io.observe(i); else if(i && i.complete){ i.classList.add('loaded') } });
+    }
+
+    // Feature: progressive enhancement for missing images
+    window.addEventListener('error', (e)=>{
+      const el = e.target; if(el && el.tagName==='IMG'){
+        // replace with placeholder SVG
+        el.classList.add('loaded');
+        el.style.objectFit='contain';
+        el.src = `data:image/svg+xml;utf8,${encodeURIComponent('<svg xmlns="http://www.w3.org/2000/svg" width="800" height="1200"><rect width="100%" height="100%" fill="#120f24"/><text x="50%" y="50%" fill="rgba(138,43,226,0.4)" font-family="Inter,Arial" font-size="24" text-anchor="middle">Изображение не найдено</text></svg>')}`;
+      }
+    }, true);
+
+    // On initial page, if no hash present, set to #home
+    if(!location.hash) location.hash = '#home';
+
+  </script>
 </body>
 </html>
